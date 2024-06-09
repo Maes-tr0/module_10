@@ -1,11 +1,14 @@
 package com.example;
 
-import com.example.task1.PhoneNumber;
+import com.example.task1.PhoneNumberValidation;
+
+import java.io.File;
 
 public class PhoneNumberValidationTest {
     public static void main(String[] args) {
-        PhoneNumber phoneNumber = new PhoneNumber();
-        phoneNumber.printValidPhoneNumber();
+        File filePath = new File("src/main/resources/com/example/task1/input/file.txt");
+        PhoneNumberValidation phoneNumber = new PhoneNumberValidation(filePath);
+        System.out.println(phoneNumber);
         /* Result:
             987-123-4567
             (123) 456-7890
