@@ -1,0 +1,10 @@
+name age
+alice 21
+ryan 30
+oleg 19
+nikita 23
+kate 54
+ivan 43
+jonne 33
+maria 25
+alex 27
