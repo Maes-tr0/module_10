@@ -10,9 +10,9 @@ public class FileToJSON {
 
     public FileToJSON(File file) {
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
-            String line = bufferedReader.readLine();
-            line = bufferedReader.readLine();
-            while (line != null) {
+            bufferedReader.readLine();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
                 String[] tokens = line.split(" ");
                 humans.add(new Human(tokens[0], Integer.parseInt(tokens[1])));
                 line = bufferedReader.readLine();

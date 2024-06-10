@@ -6,17 +6,17 @@ import java.util.Collection;
 
 public class PhoneNumberValidation {
     private final Collection<String> validPhoneNumbers = new ArrayList<>();
+    private static final String REGEX_FIRST_VARIANT = "^\\d{3}-\\d{3}-\\d{4}$";
+    private static final String REGEX_SECOND_VARIANT = "^\\(\\d{3}\\) \\d{3}-\\d{4}$";
+
 
     public PhoneNumberValidation(File file){
         try (BufferedReader bIS = new BufferedReader(new FileReader(file))) {
             String number;
 
+            ValidateNumber phoneNumber = validNumber -> validNumber.matches(REGEX_FIRST_VARIANT) || validNumber.matches(REGEX_SECOND_VARIANT);
+
             while ((number = bIS.readLine()) != null) {
-                ValidateNumber phoneNumber = validNumber -> {
-                    String regexFirstVariant = "^\\d{3}-\\d{3}-\\d{4}$";
-                    String regexSecondVariant = "^\\(\\d{3}\\) \\d{3}-\\d{4}$";
-                    return validNumber.matches(regexFirstVariant) || validNumber.matches(regexSecondVariant);
-                };
                 if (phoneNumber.isValidNumber(number)) {
                     validPhoneNumbers.add(number);
                 }

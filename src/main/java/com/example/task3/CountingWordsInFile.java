@@ -8,9 +8,9 @@ public class CountingWordsInFile {
 
     public CountingWordsInFile(File file) {
         try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line = br.readLine();
-            while (line != null) {
-                String[] words = line.split(" ");
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] words = line.replaceAll("\\s+", " ").split(" ");
                 for (String word : words) {
                     if(result.containsKey(word)) {
                         result.put(word, result.get(word) + 1);
