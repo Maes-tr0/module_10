@@ -10,7 +10,7 @@ public class CountingWordsInFile {
         try(BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] words = line.replaceAll("\\s+", " ").split(" ");
+                String[] words = line.trim().replaceAll("\\s+", " ").split(" ");
                 for (String word : words) {
                     if(result.containsKey(word)) {
                         result.put(word, result.get(word) + 1);
@@ -18,7 +18,6 @@ public class CountingWordsInFile {
                         result.put(word, 1);
                     }
                 }
-                line = br.readLine();
             }
         } catch (IOException e){
             e.printStackTrace();
